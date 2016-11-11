@@ -211,3 +211,17 @@ html, body {
 .mdl-demo .mdl-menu__container {
   z-index: 99;
 }
+
+.demo-card-wide.mdl-card {
+  width: 512px;
+}
+
+.demo-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+  background: url('../images/header_train_2.jpg') center / cover;
+}
+
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
