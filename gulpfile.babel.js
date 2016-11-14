@@ -39,7 +39,10 @@ const reload = browserSync.reload;
 
 // Lint JavaScript
 gulp.task('lint', () =>
-    gulp.src('app/scripts/**/*.js')
+    gulp.src([
+        'app/scripts/**/*.js',
+        '!app/scripts/vendor/**/*.js'
+    ])
     .pipe($.eslint())
     .pipe($.eslint.format())
     .pipe($.if(!browserSync.active, $.eslint.failOnError()))
@@ -157,7 +160,8 @@ gulp.task('copy-vendor-files', () => {
     //scripts
     // babyparse
     gulp.src([
-        './app/scripts/vendor/papaparse.min.js'
+        './app/scripts/vendor/papaparse.min.js',
+        './app/scripts/vendor/jquery-3.1.1.min.js'
     ])
     .pipe(gulp.dest('.tmp/scripts/vendors/'))
     .pipe(gulp.dest('dist/scripts/vendors/'));
