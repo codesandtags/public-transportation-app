@@ -97,29 +97,13 @@ $(document).ready(function() {
     $('#departureStation').on('blur', removeSelectedStationInArrival);
     $('#departureStation').on('focus', loadStations);
     $('#clearForm').on('click', cleanForm);
+    $('#searchForTimeTable').on('click', searchForTimeTable);
 });
 
 function loadStations() {
     console.info('Loading stations...');
-    gtfs.getListOfStations().then(function(response) {
-        stations = Papa.parse(response)
-        // Return each element as an object with relevant information
-        .data.map(function(station) {
-            return {
-                id: station[0],
-                name: station[2],
-                lat: station[3],
-                lng: station[4],
-                zoneId: station[5],
-                url: station[6]
-            };
-        })
-        // Eliminate undefined names
-        .filter(function(station, index, stations) {
-            return (station.name !== undefined);
-        });
-        // Delete the first row (titles)
-        stations.shift();
+    gtfs.getListOfStations().then(function(stations) {
+        gtfs.setStationsGrouped(stations);
         addStationsToDatalist(stations);
     });
 }
@@ -128,7 +112,7 @@ function addStationsToDatalist(stations) {
     const $departures = $('#departureStations');
     const $arrivals = $('#arrivalStations');
     const $datalistStations = stations.map((station) => {
-        return '<option value="' + station.name + ' - ' + station.id + '">';
+        return '<option value="' + station.name + '">';
     }).join('');
     
     $departures.html($datalistStations);
@@ -152,4 +136,14 @@ function removeSelectedStationInArrival(station) {
 function cleanForm() {
     $('#scheduleStationsForm').trigger('reset');
     $('#departureStation').focus();
+}
+
+function searchForTimeTable() {
+    const departureStation = $('#departureStation').val();
+    const arrivalStation = $('#arrivalStation').val();
+    
+    gtfs.getStopTimesFromStations(departureStation, arrivalStation)
+    .then((stopTimes) => {
+        gtfs.getTripsFromStopTimes(stopTimes);
+    });
 }
