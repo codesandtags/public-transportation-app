@@ -144,6 +144,9 @@ function searchForTimeTable() {
     
     gtfs.getStopTimesFromStations(departureStation, arrivalStation)
     .then((stopTimes) => {
-        gtfs.getTripsFromStopTimes(stopTimes);
+        gtfs.getTripsFromStopTimes(stopTimes)
+        .then(timeTable => {
+            console.log(timeTable);
+        });
     });
 }
