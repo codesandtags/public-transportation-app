@@ -156,6 +156,11 @@ gulp.task('html', () => {
 
 gulp.task('copy-vendor-files', () => {
     //fonts
+    gulp.src([
+        './app/fonts/font-material-design.woff2'
+    ])
+    .pipe(gulp.dest('.tmp/fonts/'))
+    .pipe(gulp.dest('dist/fonts/'));
     
     //scripts
     // babyparse

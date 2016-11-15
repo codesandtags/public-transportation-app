@@ -261,7 +261,7 @@ html, body {
 .demo-card-wide > .mdl-card__title {
     color: #fff;
     height: 176px;
-    background: url('../images/header_train_2.jpg') center / cover;
+    background: url('../images/header_train.jpg') center / cover;
 }
 
 .demo-card-wide > .mdl-card__menu {

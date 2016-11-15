@@ -61,8 +61,8 @@ class gtfs {
         const departureStation = this.getStationByName(departureStationName).pop();
         const arrivalStation = this.getStationByName(arrivalStationName).pop();
         const url = './data/stop_times.txt';
-        console.info('Departure Station ', departureStation);
-        console.info('Arrival Station', arrivalStation);
+        //console.info('Departure Station ', departureStation);
+        //console.info('Arrival Station', arrivalStation);
         
         return this.getUrl(url).then(response => {
             return new Promise((resolve, reject) => {
