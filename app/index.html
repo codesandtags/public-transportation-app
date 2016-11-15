@@ -72,7 +72,7 @@
         </div>
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
             <a href="#overview" class="mdl-layout__tab is-active">Schedule</a>
-            <a href="#features" class="mdl-layout__tab">FAQ</a>
+            <a href="#features" class="mdl-layout__tab">FAQ About GTFS</a>
         </div>
     </header>
     <main class="mdl-layout__content">
@@ -126,12 +126,14 @@
                         <div class="mdl-grid">
                             <div class="mdl-layout-spacer"></div>
                             <button
-                                id="searchForTimeTable" class="mdl-button mdl-button--colored mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--5-col-desktop mdl-cell--10-col-tablet mdl-cell--12-col-phone">
+                                id="searchForTimeTable"
+                                class="mdl-button mdl-button--colored mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--5-col-desktop mdl-cell--10-col-tablet mdl-cell--12-col-phone">
                                 Search
                             </button>
                             <!-- Accent-colored raised button with ripple -->
                             <button
-                                id="clearForm" class="mdl-button mdl-button--colored mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--5-col-desktop mdl-cell--10-col-tablet mdl-cell--12-col-phone">
+                                id="clearForm"
+                                class="mdl-button mdl-button--colored mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--5-col-desktop mdl-cell--10-col-tablet mdl-cell--12-col-phone">
                                 Clear
                             </button>
                             <div class="mdl-layout-spacer"></div>
@@ -141,140 +143,80 @@
                 <div class="mdl-layout-spacer"></div>
             </div>
 
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                <div
+                    class="mdl-cell mdl-cell--10-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone time-table-container">
+                    <table
+                        class="mdl-data-table mdl-js-data-table mdl-shadow--8dp mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone"
+                        id="timeTableSchedule">
+                        <thead>
+                        <tr>
+                            <th class="mdl-data-table__cell--non-numeric">Route</th>
+                            <th><i class="material-icons">map</i> Trip Id</th>
+                            <th class="mdl-data-table__cell--non-numeric"><i
+                                class="material-icons">directions_subway</i> Trip Name
+                            </th>
+                            <th class="mdl-data-table__cell--non-numeric"><i class="material-icons">schedule</i>
+                                Departure Time
+                            </th>
+                            <th class="mdl-data-table__cell--non-numeric"><i class="material-icons">schedule</i> Arrival
+                                Time
+                            </th>
+                            <th class="mdl-data-table__cell--non-numeric"><i class="material-icons">access_alarm</i>
+                                Travel Time
+                            </th>
+                            <th class="mdl-data-table__cell--non-numeric"><i class="material-icons">directions_bike</i>
+                            </th>
+                            <th class="mdl-data-table__cell--non-numeric"><i class="material-icons">accessible</i></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+
         </div>
 
         <div class="mdl-layout__tab-panel" id="features">
             <section class="section--center mdl-grid mdl-grid--no-spacing">
                 <div class="mdl-cell mdl-cell--12-col">
-                    <h4>Features</h4>
-                    Minim duis incididunt est cillum est ex occaecat consectetur. Qui sint ut et qui nisi cupidatat.
-                    Reprehenderit
-                    nostrud proident officia exercitation anim et pariatur ex.
-                    <ul class="toc">
-                        <h4>Contents</h4>
-                        <a href="#lorem1">Lorem ipsum</a>
-                        <a href="#lorem2">Lorem ipsum</a>
-                        <a href="#lorem3">Lorem ipsum</a>
-                        <a href="#lorem4">Lorem ipsum</a>
-                        <a href="#lorem5">Lorem ipsum</a>
-                    </ul>
+                    <h2>GTFS Overview</h2>
 
-                    <h5 id="lorem1">Lorem ipsum dolor sit amet</h5>
-                    Excepteur et pariatur officia veniam anim culpa cupidatat consequat ad velit culpa est non.
-                    <ul>
-                        <li>Nisi qui nisi duis commodo duis reprehenderit consequat velit aliquip.</li>
-                        <li>Dolor consectetur incididunt in ipsum laborum non et irure pariatur excepteur anim occaecat
-                            officia
-                            sint.
-                        </li>
-                        <li>Lorem labore proident officia excepteur do.</li>
-                    </ul>
-
-                    <p>
-                        Sit qui est voluptate proident minim cillum in aliquip cupidatat labore pariatur id tempor id.
-                        Proident
-                        occaecat occaecat sint mollit tempor duis dolor cillum anim. Dolore sunt ea mollit fugiat in
-                        aliqua
-                        consequat nostrud aliqua ut irure in dolore. Proident aliqua culpa sint sint exercitation. Non
-                        proident
-                        occaecat reprehenderit veniam et proident dolor id culpa ea tempor do dolor. Nulla adipisicing
-                        qui fugiat id
-                        dolor. Nostrud magna voluptate irure veniam veniam labore ipsum deserunt adipisicing laboris
-                        amet eu irure.
-                        Sunt dolore nisi velit sit id. Nostrud voluptate labore proident cupidatat enim amet Lorem
-                        officia magna
-                        excepteur occaecat eu qui. Exercitation culpa deserunt non et tempor et non.
-                    </p>
-                    <p>
-                        Do dolor eiusmod eu mollit dolore nostrud deserunt cillum irure esse sint irure fugiat
-                        exercitation. Magna
-                        sit voluptate id in tempor elit veniam enim cupidatat ea labore elit. Aliqua pariatur eu nulla
-                        labore magna
-                        dolore mollit occaecat sint commodo culpa. Eu non minim duis pariatur Lorem quis exercitation.
-                        Sunt qui ex
-                        incididunt sit anim incididunt sit elit ad officia id.
-                    </p>
-                    <p id="lorem2">
-                        Tempor voluptate ex consequat fugiat aliqua. Do sit et reprehenderit culpa deserunt culpa.
-                        Excepteur quis
-                        minim mollit irure nulla excepteur enim quis in laborum. Aliqua elit voluptate ad deserunt nulla
-                        reprehenderit adipisicing sint. Est in eiusmod exercitation esse commodo. Ea reprehenderit
-                        exercitation
-                        veniam adipisicing minim nostrud. Veniam dolore ex ea occaecat non enim minim id ut aliqua
-                        adipisicing ad.
-                        Occaecat excepteur aliqua tempor cupidatat aute dolore deserunt ipsum qui incididunt aliqua
-                        occaecat sit
-                        quis. Culpa sint aliqua aliqua reprehenderit veniam irure fugiat ea ad.
-                    </p>
-                    <p>
-                        Eu minim fugiat laborum irure veniam Lorem aliqua enim. Aliqua veniam incididunt consequat irure
-                        consequat
-                        tempor do nisi deserunt. Elit dolore ad quis consectetur sint laborum anim magna do nostrud
-                        amet. Ea nulla
-                        sit consequat quis qui irure dolor. Sint deserunt excepteur consectetur magna irure. Dolor
-                        tempor
-                        exercitation dolore pariatur incididunt ut laboris fugiat ipsum sunt veniam aute sunt labore.
-                        Non dolore sit
-                        nostrud eu ad excepteur cillum eu ex Lorem duis.
-                    </p>
-                    <p>
-                        Id occaecat velit non ipsum occaecat aliqua quis ut. Eiusmod est magna non esse est ex
-                        incididunt aute
-                        ullamco. Cillum excepteur sint ipsum qui quis velit incididunt amet. Qui deserunt anim enim
-                        laborum cillum
-                        reprehenderit duis mollit amet ad officia enim. Minim sint et quis aliqua aliqua do minim
-                        officia dolor
-                        deserunt ipsum laboris. Nulla nisi voluptate consectetur est voluptate et amet. Occaecat ut quis
-                        adipisicing
-                        ad enim. Magna est magna sit duis proident veniam reprehenderit fugiat reprehenderit enim velit
-                        ex. Ullamco
-                        laboris culpa irure aliquip ad Lorem consequat veniam ad ipsum eu. Ipsum culpa dolore sunt
-                        officia laborum
-                        quis.
+                    <h3>1. What is GTFS ?</h3>
+                    <p>The General Transit Feed Specification (GTFS), also known as <em>GTFS static</em> or <em>static
+                        transit</em>
+                        to differentiate it from the <a href="https://developers.google.com/transit/gtfs-realtime/">GTFS
+                            realtime extension</a>, defines a common format for
+                        public transportation schedules and associated geographic information. GTFS
+                        "feeds" let public transit agencies publish their transit data and
+                        developers write applications that consume that data in an interoperable way.
                     </p>
 
-                    <h5 id="lorem3">Lorem ipsum dolor sit amet</h5>
+                    <h3>2. GTFS feed</h3>
+                    <p>A GTFS feed is composed of a series of text files collected in a ZIP
+                        file. Each file models a particular aspect of transit information: stops,
+                        routes, trips, and other schedule data. The details of each file are
+                        defined in the <a href="https://developers.google.com/transit/gtfs/reference/">GTFS
+                            reference</a>.
+                    </p>
 
-                    <p id="lorem4">
-                        Eiusmod nulla aliquip ipsum reprehenderit nostrud non excepteur mollit amet esse est est dolor.
-                        Dolore quis
-                        pariatur sit consectetur veniam esse ullamco duis Lorem qui enim ut veniam. Officia deserunt
-                        minim duis
-                        laborum dolor in velit pariatur commodo ullamco eu. Aute adipisicing ad duis labore laboris do
-                        mollit dolor
-                        cillum sunt aliqua ullamco. Esse tempor quis cillum consequat reprehenderit. Adipisicing
-                        proident anim eu
-                        sint elit aliqua anim dolore cupidatat fugiat aliquip qui.
+                    <p>An example feed can be found in the <a
+                        href="https://developers.google.com/transit/gtfs/examples/">GTFS
+                        examples</a>. A transit agency can produce a GTFS feed to share their
+                        public transit information with developers, who write tools that consume
+                        GTFS feeds to incorporate public transit information into their
+                        applications. GTFS can be used to power trip planners, time table
+                        publishers, and a variety of applications, too diverse to list here, that
+                        use public transit information in some way.
                     </p>
-                    <p id="lorem5">
-                        Nisi eiusmod esse cupidatat excepteur exercitation ipsum reprehenderit nostrud deserunt aliqua
-                        ullamco. Anim
-                        est irure commodo eiusmod pariatur officia. Est dolor ipsum excepteur magna aliqua ad veniam
-                        irure qui
-                        occaecat eiusmod aute fugiat commodo. Quis mollit incididunt amet sit minim velit eu fugiat
-                        voluptate
-                        excepteur. Sit minim id pariatur ex cupidatat cupidatat nostrud nostrud ipsum.
-                    </p>
-                    <p>
-                        Enim ea officia excepteur ad veniam id reprehenderit eiusmod esse mollit consequat. Esse non
-                        aute ullamco
-                        Lorem aliqua qui dolore irure eiusmod aute aliqua proident labore aliqua. Ipsum voluptate
-                        voluptate
-                        exercitation laborum deserunt nulla elit aliquip et minim ex veniam. Duis cupidatat aute sunt
-                        officia mollit
-                        dolor ad elit ad aute labore nostrud duis pariatur. In est sint voluptate consectetur velit ea
-                        non labore.
-                        Ut duis ea aliqua consequat nulla laboris fugiat aute id culpa proident. Minim eiusmod laboris
-                        enim Lorem
-                        nisi excepteur mollit voluptate enim labore reprehenderit officia mollit.
-                    </p>
-                    <p>
-                        Cupidatat labore nisi ut sunt voluptate quis sunt qui ad Lorem esse nisi. Ex esse velit ullamco
-                        incididunt
-                        occaecat dolore veniam tempor minim adipisicing amet. Consequat in exercitation est elit anim
-                        consequat
-                        cillum sint labore cillum. Aliquip mollit laboris ad labore anim.
-                    </p>
+
+                    <h4>Do you want to know more about it?</h4>
+                    <a href="https://developers.google.com/transit/gtfs/?hl=en-419">
+                        Read Google Documentation about GTFS
+                    </a>
                 </div>
             </section>
         </div>
@@ -282,53 +224,32 @@
             <div class="mdl-mega-footer--middle-section">
                 <div class="mdl-mega-footer--drop-down-section">
                     <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                    <h1 class="mdl-mega-footer--heading">Features</h1>
+                    <h1 class="mdl-mega-footer--heading">GTFS Services</h1>
                     <ul class="mdl-mega-footer--link-list">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Terms</a></li>
-                        <li><a href="#">Partners</a></li>
-                        <li><a href="#">Updates</a></li>
+                        <li><a href="http://www.caltrain.com/developer.html">CallTrain Developers</a></li>
+                        <li><a href="http://511.org/developers/list/data/">511 SF Bay</a></li>
+                        <li><a href="https://developers.google.com/transit/">Google Transit</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/General_Transit_Feed_Specification">GTFS Wikipedia</a></li>
                     </ul>
                 </div>
                 <div class="mdl-mega-footer--drop-down-section">
                     <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                    <h1 class="mdl-mega-footer--heading">Details</h1>
+                    <h1 class="mdl-mega-footer--heading">Libraries Used</h1>
                     <ul class="mdl-mega-footer--link-list">
-                        <li><a href="#">Spec</a></li>
-                        <li><a href="#">Tools</a></li>
-                        <li><a href="#">Resources</a></li>
+                        <li><a href="https://getmdl.io/">Material Design</a></li>
+                        <li><a href="http://jquery.com/">jQuery</a></li>
+                        <li><a href="http://papaparse.com/">Papa Parse</a></li>
+                        <li><a href="https://developers.google.com/web/tools/starter-kit/">Google Starter Kit</a></li>
                     </ul>
                 </div>
                 <div class="mdl-mega-footer--drop-down-section">
                     <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                    <h1 class="mdl-mega-footer--heading">Technology</h1>
+                    <h1 class="mdl-mega-footer--heading">About me</h1>
                     <ul class="mdl-mega-footer--link-list">
-                        <li><a href="#">How it works</a></li>
-                        <li><a href="#">Patterns</a></li>
-                        <li><a href="#">Usage</a></li>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">Contracts</a></li>
+                        <li><a href="https://github.com/codesandtags">GitHub</a></li>
+                        <li><a href="https://www.linkedin.com/in/edwintorresdeveloper">LinkedIn</a></li>
                     </ul>
                 </div>
-                <div class="mdl-mega-footer--drop-down-section">
-                    <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                    <h1 class="mdl-mega-footer--heading">FAQ</h1>
-                    <ul class="mdl-mega-footer--link-list">
-                        <li><a href="#">Questions</a></li>
-                        <li><a href="#">Answers</a></li>
-                        <li><a href="#">Contact us</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mdl-mega-footer--bottom-section">
-                <div class="mdl-logo">
-                    More Information
-                </div>
-                <ul class="mdl-mega-footer--link-list">
-                    <li><a href="https://developers.google.com/web/starter-kit/">Web Starter Kit</a></li>
-                    <li><a href="#">Help</a></li>
-                    <li><a href="#">Privacy and Terms</a></li>
-                </ul>
             </div>
         </footer>
     </main>
@@ -341,23 +262,5 @@
 <script src="scripts/gtfs.js"></script>
 <script src="scripts/main.js"></script>
 <!-- endbuild -->
-
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-<script>
-    (function(i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-    ga('create', 'UA-XXXXX-X', 'auto');
-    ga('send', 'pageview');
-</script>
-<!-- Built with love using Web Starter Kit -->
 </body>
 </html>

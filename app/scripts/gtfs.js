@@ -164,7 +164,7 @@ class gtfs {
                         return 0;
                     });
                     
-                    console.info(trips);
+                    resolve(trips);
                 } else {
                     reject(new Error('Is not possible retrieve trips'));
                 }

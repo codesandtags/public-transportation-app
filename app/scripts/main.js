@@ -136,6 +136,7 @@ function removeSelectedStationInArrival(station) {
 function cleanForm() {
     $('#scheduleStationsForm').trigger('reset');
     $('#departureStation').focus();
+    $('.time-table-container').fadeOut();
 }
 
 function searchForTimeTable() {
@@ -146,7 +147,33 @@ function searchForTimeTable() {
     .then((stopTimes) => {
         gtfs.getTripsFromStopTimes(stopTimes)
         .then(timeTable => {
-            console.log(timeTable);
+            showTimeTableSchedule(timeTable);
         });
     });
+}
+
+function showTimeTableSchedule(timeTableData) {
+    const $timeTableBody = $('#timeTableSchedule > tbody');
+    const rowsTimeTable = [];
+    console.log(timeTableData);
+    
+    $('.time-table-container').fadeIn();
+    
+    timeTableData.forEach((timeData) => {
+        const wheel = (timeData.wheelChairAccesible === '1') ? '<i class="material-icons">check</i>' : '<i class="material-icons">close</i>';
+        const bike = (timeData.bikesAllowed === '1') ? '<i class="material-icons">check</i>' : '<i class="material-icons">close</i>';
+        const row = '<tr>' +
+            '<td class="mdl-data-table__cell--non-numeric">' + timeData.routeId + '</td>' +
+            '<td >' + timeData.tripId + '</td>' +
+            '<td class="mdl-data-table__cell--non-numeric">' + timeData.tripHeadSign + '</td>' +
+            '<td class="mdl-data-table__cell--non-numeric">' + timeData.departureTime + '</td>' +
+            '<td class="mdl-data-table__cell--non-numeric">' + timeData.arrivalTime + '</td>' +
+            '<td class="mdl-data-table__cell--non-numeric">' + timeData.timeToArrival + ' Mins</td>' +
+            '<td class="mdl-data-table__cell--non-numeric">' + bike + '</td>' +
+            '<td class="mdl-data-table__cell--non-numeric">' + wheel + '</td>' + +'</tr>';
+        
+        rowsTimeTable.push(row);
+    });
+    
+    $timeTableBody.html(rowsTimeTable.join(''));
 }
