@@ -13,13 +13,8 @@ const allCaches = [
 const cacheFiles = [
     '/',
     'manifest.json',
-    //fonts
     'fonts/font-material-design.woff2',
-    //favicons
     'favicon.ico',
-    // External files
-    'https://code.getmdl.io/1.2.1/material.red-orange.min.css',
-    'https://code.getmdl.io/1.1.3/material.min.js'
 ];
 
 /**
