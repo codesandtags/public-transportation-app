@@ -271,3 +271,37 @@ html, body {
 .time-table-container {
     display: none;
 }
+
+/**
+ * Responsive for MDL
+ **/
+
+.mdl-data-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+#timeTableSchedule td, th {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+/* unrelated to responsive table css */
+#timeTableSchedule {
+    margin-top: 24px;
+}
+
+.material-icons {
+    vertical-align: -25%;
+}
+
+.mdl-data-table th, td {
+    text-align: left !important;
+}
+
+.center {
+    text-align: center;
+}

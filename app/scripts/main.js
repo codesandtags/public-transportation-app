@@ -108,14 +108,14 @@ function showTimeTableSchedule(timeTableData) {
         const wheel = (timeData.wheelChairAccesible === '1') ? '<i class="material-icons">check</i>' : '<i class="material-icons">close</i>';
         const bike = (timeData.bikesAllowed === '1') ? '<i class="material-icons">check</i>' : '<i class="material-icons">close</i>';
         const row = '<tr>' +
-            '<td class="mdl-data-table__cell--non-numeric">' + timeData.routeId + '</td>' +
+            '<td class="mdl-data-table__cell--non-numeric mdl-cell--hide-phone mdl-cell--hide-tablet">' + timeData.routeId + '</td>' +
             '<td >' + timeData.tripId + '</td>' +
-            '<td class="mdl-data-table__cell--non-numeric">' + timeData.tripHeadSign + '</td>' +
+            '<td class="mdl-data-table__cell--non-numeric mdl-cell--hide-phone mdl-cell--hide-tablet">' + timeData.tripHeadSign + '</td>' +
             '<td class="mdl-data-table__cell--non-numeric">' + timeData.departureTime + '</td>' +
             '<td class="mdl-data-table__cell--non-numeric">' + timeData.arrivalTime + '</td>' +
-            '<td class="mdl-data-table__cell--non-numeric">' + timeData.timeToArrival + ' Mins</td>' +
-            '<td class="mdl-data-table__cell--non-numeric">' + bike + '</td>' +
-            '<td class="mdl-data-table__cell--non-numeric">' + wheel + '</td>' + +'</tr>';
+            '<td class="mdl-data-table__cell--non-numeric mdl-cell--hide-phone mdl-cell--hide-tablet">' + timeData.timeToArrival + ' Mins</td>' +
+            '<td class="mdl-data-table__cell--non-numeric mdl-cell--hide-phone mdl-cell--hide-tablet">' + bike + '</td>' +
+            '<td class="mdl-data-table__cell--non-numeric mdl-cell--hide-phone mdl-cell--hide-tablet">' + wheel + '</td>' + +'</tr>';
         
         rowsTimeTable.push(row);
     });

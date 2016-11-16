@@ -1,4 +1,4 @@
-const staticCacheName = 'public-static-v1';
+const staticCacheName = 'public-static';
 const imageCacheNames = 'public-imgs';
 const scriptsCacheName = 'public-scripts';
 const stylesCacheName = 'public-styles';
@@ -136,6 +136,9 @@ self.addEventListener('message', function(event) {
     }
 });
 
+/**
+ * Delete old caches and
+ */
 self.addEventListener('activate', function(event) {
     event.waitUntil(
         caches.keys().then(function(cacheNames) {
@@ -143,6 +146,7 @@ self.addEventListener('activate', function(event) {
                 cacheNames.filter(function(cacheName) {
                     return cacheName.startsWith('public-') && !allCaches.includes(cacheName);
                 }).map(function(cacheName) {
+                    console.log('Deleting Cache : ' + cacheName);
                     return caches.delete(cacheName);
                 })
             );
