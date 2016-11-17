@@ -1,4 +1,15 @@
 function gtfsController() {
+    this.db = new Dexie('gtfs-dbx');
+    
+    // Define a schema
+    this.db.version(2).stores({
+        stationsGrouped: 'id, name, lat, lng, zoneId, url'
+    });
+    
+    // Open the database
+    this.db.open().catch(function(error) {
+        alert('Uh oh : ' + error);
+    });
 }
 
 gtfsController.prototype.getUrl = function(url) {
@@ -9,6 +20,7 @@ gtfsController.prototype.getUrl = function(url) {
 
 gtfsController.prototype.getListOfStations = function() {
     const url = './data/stops.txt';
+    const gtfs = this;
     
     return this.getUrl(url)
     .then(response => {
@@ -50,11 +62,20 @@ gtfsController.prototype.getListOfStations = function() {
                     }
                 });
                 
+                debugger;
+                gtfs.storageStations(stationsGrouped);
                 resolve(stationsGrouped);
             } else {
                 reject(new Error('Is not possible fetch the stations'));
             }
         });
+    });
+};
+
+gtfsController.prototype.storageStations = function(stations) {
+    console.log('Guardando!');
+    stations.forEach((station) => {
+        this.db.stationsGrouped.add(station);
     });
 };
 
@@ -112,6 +133,7 @@ gtfsController.prototype.getStopTimesFromStations = function(departureStationNam
                     }
                 });
                 
+                console.info(stopTimesFiltered);
                 resolve(stopTimesFiltered);
             } else {
                 reject(new Error('Is not possible retrieve stopTimes'));
@@ -165,6 +187,7 @@ gtfsController.prototype.getTripsFromStopTimes = function(stopTimes) {
                     return 0;
                 });
                 
+                console.log(trips);
                 resolve(trips);
             } else {
                 reject(new Error('Is not possible retrieve trips'));
