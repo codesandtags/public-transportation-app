@@ -56,10 +56,11 @@ self.addEventListener('fetch', function(event) {
             return;
         }
         
-        if (requestUrl.pathname.startsWith('/data/')) {
-            event.respondWith(serveData(event.request));
-            return;
-        }
+        //TODO: remove this data in order use IDB
+        //if (requestUrl.pathname.startsWith('/data/')) {
+        //    event.respondWith(serveData(event.request));
+        //    return;
+        //}
     }
     
     event.respondWith(
