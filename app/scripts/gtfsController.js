@@ -4,8 +4,8 @@ function gtfsController() {
     // Define a schema
     this.db.version(1).stores({
         stationsGrouped: 'id, name, lat, lng, zoneId, url',
-        stopTimes: 'tripId, arrivalTime, departureTime, stopId, stopSequence',
-        trips: 'routeId, serviceId, tripId, tripHeadSign, tripShortName, directionId, wheelChairAccesible, bikesAllowed, stopIdDeparture, stopIdArrival, departureTime, arrivalTime, timeToArrival'
+        stopTimes: '++id, tripId, arrivalTime, departureTime, stopId, stopSequence',
+        trips: '++id, routeId, serviceId, tripId, tripHeadSign, tripShortName, directionId, wheelChairAccesible, bikesAllowed, stopIdDeparture, stopIdArrival, departureTime, arrivalTime, timeToArrival'
     });
     
     // Open the database
@@ -93,9 +93,9 @@ gtfsController.prototype.storageStations = function(stations) {
 gtfsController.prototype.getStopTimesFromStations = function(departureStationName, arrivalStationName) {
     const departureStation = this.getStationByName(departureStationName).pop();
     const arrivalStation = this.getStationByName(arrivalStationName).pop();
-    const url = './data/stop_times.txt';
     const gtfsController = this;
     const stopTimesIds = [].concat(departureStation.id, arrivalStation.id);
+    const url = './data/stop_times.txt';
     console.info('🚇 Departure station : ' + departureStationName);
     console.info('🚇 Arrival station : ' + arrivalStationName);
     
@@ -171,6 +171,8 @@ gtfsController.prototype.getStopTimesFiltered = function(stopTimes, departureSta
     stopTimesFiltered = stopTimesFiltered.filter(stopTime => {
         return (departureStation.id.includes(stopTime.stopId) || arrivalStation.id.includes(stopTime.stopId) );
     });
+    
+    return stopTimesFiltered;
 };
 
 gtfsController.prototype.storageStopTimes = function(stopTimes) {
@@ -181,13 +183,14 @@ gtfsController.prototype.storageStopTimes = function(stopTimes) {
 };
 
 gtfsController.prototype.getTripsFromStopTimes = function(stopTimes) {
+    const gtfsController = this;
     const url = './data/trips.txt';
     
     return this.db.trips.toArray().then((trips) => {
         if (trips.length) {
             return new Promise((resolve) => {
                 console.info('📚 Getting trips from IDB');
-                resolve(trips);
+                resolve(gtfsController.getTripsFiltered(trips, stopTimes));
             });
         } else {
             return this.getUrl(url).then(response => {
@@ -206,33 +209,12 @@ gtfsController.prototype.getTripsFromStopTimes = function(stopTimes) {
                                 wheelChairAccesible: trip[7],
                                 bikesAllowed: trip[8]
                             };
-                        })
-                        .filter(trip => {
-                            for (let i = 0; i < stopTimes.length; i++) {
-                                if (trip.tripId === stopTimes[i].tripId) {
-                                    // Add aditional information for each trip
-                                    trip.stopIdDeparture = stopTimes[i].stopId;
-                                    trip.stopIdArrival = stopTimes[i].stopIdArrival;
-                                    trip.departureTime = stopTimes[i].departureTime;
-                                    trip.arrivalTime = stopTimes[i].arrivalTime;
-                                    trip.timeToArrival = stopTimes[i].timeToArrival;
-                                    return true;
-                                }
-                            }
-                            return false;
-                        })
-                        // Soft trips by departureTime
-                        .sort((tripA, tripB) => {
-                            const timeInSecondsTripA = this.getTimeInSeconds(tripA.departureTime);
-                            const timeInSecondsTripB = this.getTimeInSeconds(tripB.departureTime);
-                            
-                            if (timeInSecondsTripA < timeInSecondsTripB) return -1;
-                            if (timeInSecondsTripA > timeInSecondsTripB) return 1;
-                            return 0;
                         });
                         
-                        console.log(trips);
-                        resolve(trips);
+                        // Save stopTime register in IDB in order to request offline
+                        gtfsController.storageTrips(trips);
+                        // Resolve with the trips filtered by the stopTimes
+                        resolve(gtfsController.getTripsFiltered(trips, stopTimes));
                     } else {
                         reject(new Error('Is not possible retrieve trips'));
                     }
@@ -240,7 +222,32 @@ gtfsController.prototype.getTripsFromStopTimes = function(stopTimes) {
             });
         }
     });
-    
+};
+
+gtfsController.prototype.getTripsFiltered = function(trips, stopTimes) {
+    return trips.filter(trip => {
+        for (let i = 0; i < stopTimes.length; i++) {
+            if (trip.tripId === stopTimes[i].tripId) {
+                // Add aditional information for each trip
+                trip.stopIdDeparture = stopTimes[i].stopId;
+                trip.stopIdArrival = stopTimes[i].stopIdArrival;
+                trip.departureTime = stopTimes[i].departureTime;
+                trip.arrivalTime = stopTimes[i].arrivalTime;
+                trip.timeToArrival = stopTimes[i].timeToArrival;
+                return true;
+            }
+        }
+        return false;
+    })
+    // Soft trips by departureTime
+    .sort((tripA, tripB) => {
+        const timeInSecondsTripA = this.getTimeInSeconds(tripA.departureTime);
+        const timeInSecondsTripB = this.getTimeInSeconds(tripB.departureTime);
+        
+        if (timeInSecondsTripA < timeInSecondsTripB) return -1;
+        if (timeInSecondsTripA > timeInSecondsTripB) return 1;
+        return 0;
+    });
 };
 
 gtfsController.prototype.storageTrips = function(trips) {
